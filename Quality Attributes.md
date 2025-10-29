@@ -1,8 +1,8 @@
 | ID   | Quality Attribute | Scenario | Associated Use Case |
 |:-----|:---|:---| :---|
-|QA-1 |  |  |  |
-|QA-2 |  |  |  |
-|QA-3 |  |  |  |
-|QA-4 |  |  |  |
-|QA-5 |  |  |  |
+|QA-1 | Performance |  |  |
+|QA-2 | Modifiability |  |  |
+|QA-3 | Availability |  |  |
+|QA-4 | Security |  |  |
+|QA-5 | Usability |  |  |
 
