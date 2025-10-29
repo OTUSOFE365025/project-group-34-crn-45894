@@ -1,22 +1,21 @@
-**Business Case**
-The AIDAP (AI-Powered Digital Assistant Platform) is a cutting-edge solution designed to enhance the digital experience for students, faculty, and administrators at educational institutions. This platform provides a conversational interface for users to interact with institutional data such as course schedules, academic deadlines, announcements, and performance analytics. AIDAP utilizes advanced AI models to deliver personalized, contextual answers to queries, streamlining academic and administrative processes.
+The AIDAP is a tool created to improve the digital experience for administrators, teachers, and students in educational institutions. Users can interact with institutional data, like announcements, academic deadlines, course schedules, and performance analytics, through the system's conversational interface. AIDAP simplifies procedures by using sophisticated AI models to provide personalized responses to queries.
 
-The primary goal of AIDAP is to improve student engagement, support faculty in managing course-related tasks, and increase administrative efficiency. Students will benefit from real-time access to academic resources, automated notifications, and a personalized dashboard summarizing key performance metrics. Faculty will have access to class analytics, automated reminders, and a centralized hub for managing course materials. Administrators will be able to disseminate campus-wide announcements, monitor system usage, and manage integrations with existing university systems seamlessly.
+AIDAP's objective is to improve the institution's efficiency, assist teachers in managing course-related tasks, and raise student involvement. A personalized dashboard with automated notifications,performance indicators, and access to learning resources will all be available to students. Instructors will benefit from an integrated platform for managing course content, automated reminders, and class analytics. Managing links with current university systems, monitoring system usage, and sending campus notifications will be easy for administrators.
 
-AIDAP will be deployed as a cloud-native solution, offering high availability and scalability to support up to 5,000 concurrent users. The system aims for 99.5% uptime and a response time of under 2 seconds under normal operating conditions. With its ability to integrate with existing systems like the Learning Management System (LMS), registration, and calendar platforms, AIDAP is poised to streamline workflows, improve data access, and provide a more cohesive digital experience for the entire academic community.
+During normal use, the system aims for 99.5% availability and a response time of less than two seconds. AIDAP can expand access to information, automate processes, and give the entire academic community a more unified digital experience by integrating with the other systems used by the institution like the LMS, registration, and calendar systems.
 
-The institution currently lacks an integrated platform for students, faculty, and administrators to access real-time academic and administrative information. Students struggle with tracking deadlines and performance, while faculty face challenges in managing course materials and communicating updates. Administrators have limited tools for disseminating announcements and monitoring data. This fragmentation leads to inefficiencies, slow response times, and missed opportunities for engagement. A unified, AI-powered platform is needed to streamline workflows and improve communication across all stakeholders.
+Currently the institution does not have an integrated platform where administrators, instructors, and students can examine academic and administrative data in real time. While teachers find it difficult to keep an eye on course material and provide updates, students also find it difficult to keep track of deadlines and performance. Administrators lack the resources to monitor information and make announcements. Inefficiencies, slow reaction times, and wasted engagement opportunities happen because of this division. To streamline procedures and improve communication across all stakeholders, an integrated platform driven by AI is required.
 
-The proposed solution is to deploy the AIDAP system, an AI-powered digital assistant platform that integrates with existing university systems (LMS, registration, calendar) to provide:
-- Personalized Dashboards for students that summarize schedules, deadlines, grades, and performance metrics.
-- Automated Notifications to keep students updated about class schedules, assignments, and campus-wide announcements.
-- AI-powered Query Handling for faculty and students to interact with the system in a conversational manner to access academic data and insights.
-- Administrative Tools for efficient management of course materials, announcements, and real-time system monitoring.
+The solution is to implement the AIDAP system, an AI digital assistant program that can be connected with the current university systems (calendar, registration, and LMS) to provide:
+-  Personalized Student dashboards which gather data on performance, grades, deadlines, and schedules.
+-  Students can receive automated notifications about campus-wide announcements, assignments, and class schedules.
+-  Students and staff can ask the system questions in a conversational way to get academic data and information using AI-based query handling.
+- Administrators have the ability to efficiently manage announcements, course content, and real-time system monitoring.
 
-AIDAP will be deployed as a cloud-native, scalable solution ensuring high availability (99.5% uptime) and quick response times (under 2 seconds).
+AIDAP will be deployed as a cloud-native, scalable application with high availability (99.5% uptime) and fast response times (under 2 seconds).
 
 Project Scope
-- The initial deployment will focus on providing AI-powered digital assistance for students, faculty, and administrators, with a target of supporting up to 5,000 concurrent users.
-- 100 time servers (for scalability) will be used initially, with plans to expand further.
-- A cloud-native infrastructure will be adopted for high availability, performance, and ease of scaling.
-- Future expansions will include more advanced AI models, multi-language support, and integration with additional third-party tools.
+- The initial deployment will be focused on digital AI assistance to students, teachers, and administrators with a target of allowing 2,000 users simultaneously accessing the system.
+- 100 time servers (as a starting point) will be used, but can be scaled up later.
+- A cloud infrastructure will be used in support of high availability, performance, and scalability.
+- Future expansions will include better AI models, multi-language support, and integration with additional third-party tools.
