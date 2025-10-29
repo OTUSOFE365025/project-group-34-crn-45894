@@ -1,1 +1,8 @@
-Add the Quality Attributes to this file
+| ID   | Quality Attribute | Scenario | Associated Use Case |
+|:-----|:---|:---| :---|
+|QA-1 | Performance | 5,000 concurrent users issue natural language queries during peak operational load. The natural language processing and response generation module returns responses efficiently without degraded user experience. 95% of queries are answered within 2 seconds under normal load and no more than 5 seconds under peak load. | UC-1 View Personalized Dashboards, UC-2 Manage Push Notifications |
+|QA-2 | Modifiability | A new data source integration is added to the system through the integration layer and service connectors during a zero-downtime maintenance window. The new data source is integrated and deployed without major architectural changes or service interruption longer than 1 minute. | UC 4 – Maintain System |
+|QA-3 | Availability | A failure occurs in the AI assistant service infrastructure during normal operation at full load (5,000 concurrent users). The system recovers automatically with failover, ensuring no interruption to service and over 99.5% uptime. Failover occurs within 30 seconds. | UC 4 – Maintain System |
+|QA-4 | Security | An unauthorized actor attempts to access student records by sending a malicious API request with forged credentials. The authentication and access control layer denies access, logs the activity, and alerts security. 100% of unauthorized access attempts are blocked, and logs are stored within 1 second of detection. | UC 5 – System Access |
+|QA-5 | Usability | A first-time student user interacts with the assistant through the web interface to submit a query. The user completes the task without prior training or documentation. 90% of new users complete a query in under 2 minutes without external help, and satisfaction is greater than 85%. | UC 1 – View Personalized Dashboards UC 2 – Manage Push Notifications |
+
