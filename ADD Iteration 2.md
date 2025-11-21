@@ -1,5 +1,5 @@
 
-AIDAP – Architectural Design Iteration (Iteration 1)
+AIDAP – Architectural Design Iteration (Iteration 2)
 
 # Iteration 2 — Focus on Primary Functionalities
 
@@ -93,54 +93,13 @@ Provides secure login and role‑based access. Integrates with SSO (Keycloak/OAu
 
 
 
-step 7: Kanban in sheets
+## Component Responsibilities
 
-Not Addressed
-Partially Addressed
-Completely Addressed
-Design Decisions Made During the Iteration
-UC-3
-
-
-
-
-Not refined in Iteration 2. The Course Material Service was identified earlier but deferred. Will be addressed in a later iteration.
-
-
-UC-2
-
-
-Notifications have been instantiated, but further refinement needed to determine availability tactics and scalability
-
-
-
-
-UC-5
-Authentication & Access Control Interfaces defined with Keycloak/OAuth2 and fully supports user-based acces
-
-
-
-
-UC-1
-Dashboard Service instantiated with clear responsibilities. Interfaces defined to client UI
-
-
-
-
-UC-4
-
-
-
-
-
-
-UC-6
-Data synchronization service has been instantiated 
-
-
-
-
-CRN-2
-Cross-cutting availability tactics are applied across modules  ensures availability, scalability, failover and backup recovery  
-
-
+| Element                        | Responsibility |
+|-------------------------------|----------------|
+| **Dashboard Service**         | Shows personalized dashboards to users and retrieves analytics data from persistence and integration services. |
+| **Notification Service**      | Supports creation, editing, and reliable delivery of notifications even under high load. |
+| **System Maintenance Module** | Deploys updates with zero downtime; performs secure backup and restoration of system state. |
+| **Data Synchronization Service** | Synchronizes data between AIDAP and external systems; performs backups and recovery operations. |
+| **Availability Module**       | Provides replication, load balancing, monitoring, and stateless patterns across services to meet CRN-2. |
+| **Authentication & Ac**
