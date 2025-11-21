@@ -2,18 +2,13 @@
 
 ## Step 1 — Design Purpose & Drivers
 
-### **Design Purpose**
+| **Design Purpose** | This is a greenfield system with a mature domain. The purpose is to help users easily access campus information through an AI-powered chat interface that connects to existing university systems. |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Primary Functional Requirements** | The use cases we believe to be important and primary are:<br>**UC-1:** Supports the main business goal<br>**UC-5:** Supports business goal with a central authentication service<br>**UC-6:** Supports external integrations |
+| **Quality Attribute Scenarios** | Refer to the Quality Attribute Scenario Table below, chosen QA’s are QA-1, QA-2 and QA-4 for this iteration. |
+| **Constraints** | All constraints discussed in Phase 1 included as drivers except for CON-2 |
+| **Concerns** | All concerns discussed in Phase 1 included as drivers |
 
-This is a **greenfield system** built within a mature university domain.  
-Its purpose is to allow users to **easily access campus information** through an **AI-powered chat interface** that integrates with existing university systems.
-
-### **Primary Functional Requirements**
-
-The core use cases supported in this iteration are:
-
-- **UC-1:** Supports the main business goal
-- **UC-5:** Supports business goal with a central authentication service
-- **UC-6:** Supports external integrations
 
 ### **Quality Attribute Scenarios**
 
@@ -27,13 +22,7 @@ Chosen QAs for this iteration: **QA-1, QA-2, QA-4**
 | QA-4     | Medium                 | High       |
 | QA-5     | High                   | Low        |
 
-### **Constraints**
 
-- All Phase 1 constraints included except **CON-2**
-
-### **Concerns**
-
-- All Phase 1 concerns included as drivers
 
 ---
 
@@ -136,23 +125,20 @@ Since this is a **greenfield architecture**, the entire AIDAP system must be ref
 ---
 
 ## Step 7 — Coverage of Architectural Drivers
-
-| Driver | Status               | Notes                                                     |
-| ------ | -------------------- | --------------------------------------------------------- |
-| UC-1   | Completely Addressed | Dashboard processing + Rich Web UI defined.               |
-| UC-5   | Partially Addressed  | SSO supported via Auth Manager; details pending.          |
-| UC-6   | Completely Addressed | External sync defined in Service Agents.                  |
-| QA-1   | Partially Addressed  | Query/data flow not fully designed.                       |
-| QA-2   | Partially Addressed  | Integration gateway defined; design incomplete.           |
-| QA-4   | Partially Addressed  | Security defined; encryption config pending.              |
-| CON-1  | Partially Addressed  | SSO integrated; endpoints unfinished.                     |
-| CON-3  | Completely Addressed | REST API access via Service Agents.                       |
-| CON-4  | Partially Addressed  | RBAC supported; data partitioning incomplete.             |
-| CON-5  | Partially Addressed  | Availability via isolated storage; no load balancing yet. |
-| CRN-1  | Partially Addressed  | Text supported; voice pipeline missing.                   |
-| CRN-2  | Not Addressed        | No backup/failover strategy yet.                          |
-| CRN-3  | Partially Addressed  | Monitoring exists; alerts not designed.                   |
-| CRN-4  | Completely Addressed | Integration through Service Agents + App Logic.           |
-| CRN-5  | Partially Addressed  | Personalization supported; model tuning pending.          |
-
----
+| **Not Addressed** | **Partially Addressed** | **Completely Addressed** | **Design Decisions Made During the Iteration** |
+|-------------------|--------------------------|---------------------------|------------------------------------------------|
+|                   |                          | **UC-1**                  | Dashboard processing is defined as a component which generates a dashboard along with the Rich Web UI. |
+|                   | **UC-5**                 |                           | Authentication and session sign-ins through the SSO are supported through the Auth Manager, not fully designed yet. |
+|                   |                          | **UC-6**                  | Synchronization with external institution systems is completely defined through the Service Agents component. |
+|                   | **QA-1**                 |                           | API Interface and Query module map appropriate operations to given query, data flow not fully designed. |
+|                   | **QA-2**                 |                           | Gateway from new external data is defined through the Service Agents module, not fully designed yet. |
+|                   | **QA-4**                 |                           | Security in both client and server side is defined, encryption configurations not implemented. |
+|                   | **CON-1**                |                           | Auth Manager integrates and authenticates the SSO, endpoints not finalized. |
+|                   |                          | **CON-3**                 | External systems are accessed through Service Agents module using REST API’s. |
+|                   | **CON-4**                |                           | Auth Manager and Security enforce role-based access along with saved user data, data-partitioning not fully implemented. |
+|                   | **CON-5**                |                           | With the isolated storage module system is always available, load-balancing not yet implemented. |
+|                   |          **CRN-1**                  |                | Rich Web UI modules support text-based interactions, voice pipeline not fully designed. |
+| **CRN-2**         |                          |                           | No backup or failover strategy defined in current iteration. |
+|                   | **CRN-3**                |                           | Operational management allows for dashboard monitoring/alerts, engagement yet to be designed. |
+|                   |                          | **CRN-4**                 | Integration points are defined through Service Agents and Application Logic. |
+|                   |            **CRN-5**                |                | Application Logic and Query Module allows for personalization decisions, model performance not yet defined. |
