@@ -70,6 +70,7 @@ Availability Module
 Replication, load balancing, monitoring, and stateless design applied across services to meet CRN‑2
 Authentication and Access control 
 Provides secure login and role‑based access. Integrates with SSO (Keycloak/OAuth2). Replicated for high availability.
+<img width="1250" height="579" alt="image" src="https://github.com/user-attachments/assets/8db98ba1-8c80-4e07-9641-dc738fb4122a" />
 
 step 7: Kanban in sheets
 
