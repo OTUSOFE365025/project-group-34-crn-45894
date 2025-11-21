@@ -93,6 +93,15 @@ Provides secure login and role‑based access. Integrates with SSO (Keycloak/OAu
 
 
 
+# Domain Objects Associated With the Use Case → Reference Architecture
+
+---
+
+## Sequence Diagram (Placeholder)
+*Sequence diagram will be added here (e.g., via draw.io).*
+
+---
+
 ## Component Responsibilities
 
 | Element                        | Responsibility |
@@ -102,4 +111,29 @@ Provides secure login and role‑based access. Integrates with SSO (Keycloak/OAu
 | **System Maintenance Module** | Deploys updates with zero downtime; performs secure backup and restoration of system state. |
 | **Data Synchronization Service** | Synchronizes data between AIDAP and external systems; performs backups and recovery operations. |
 | **Availability Module**       | Provides replication, load balancing, monitoring, and stateless patterns across services to meet CRN-2. |
-| **Authentication & Ac**
+| **Authentication & Access Control** | Secure login and role-based access; integrates with SSO (Keycloak/OAuth2); replicated for high availability. |
+
+---
+
+## Methods (To Be Refined)
+
+| Method Name | Description |
+|-------------|-------------|
+| *TBD* | Methods will be refined in future iterations, tied to UC-1, UC-5, and UC-6. |
+
+---
+
+# Step 7: Kanban (Evaluation Table)
+
+### **Iteration Status Overview**
+
+| Item | Not Addressed | Partially Addressed | Completely Addressed | Notes |
+|------|---------------|---------------------|-----------------------|-------|
+| **UC-3** | ✅ | | | Not refined in Iteration 2. Course Material Service was identified earlier but deferred. Will be addressed in a later iteration. |
+| **UC-2** | | ✅ | | Notifications instantiated but require further refinement for availability & scalability. |
+| **UC-5** | | | ✅ | Authentication & Access Control defined with Keycloak/OAuth2; supports all user roles. |
+| **UC-1** | | | ✅ | Dashboard Service instantiated with clear responsibilities; interfaces defined to client UI. |
+| **UC-4** | | | | No progress in this iteration. |
+| **UC-6** | | | ✅ | Data Synchronization Service instantiated. |
+| **CRN-2** | | | ✅ | Availability tactics applied system-wide (replication, statelessness, failover, backup recovery). |
+
