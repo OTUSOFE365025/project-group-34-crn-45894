@@ -1,60 +1,76 @@
 
 AIDAP – Architectural Design Iteration (Iteration 1)
 
-Iteration 2 - Focuses on Primary Functionalities 
-Step 2: Selecting Architectural drivers
-In this iteration we will be focusing on identifying elements to support primary functionality. In particular we will be addressing CRN-2 which states the system should have high availability and scalability including failover strategies and backup recovery for worst case outcomes  
+# Iteration 2 — Focus on Primary Functionalities
 
-We will be considering the following use case to address as well as our CRN-2.
-UC-1
-UC-5
-UC-6
+---
 
-Step 3: Elements to Refine
-Given this is the second iteration we will be zooming in on specific modules that support the chosen use cases and our concern. The focus in this section will be on the server-side as we go over responsibilities tied to availability and modifiability which will be refined through decomposition.
+## Step 2: Selecting Architectural Drivers
 
-Step 4: Design Concept that Satify Drivers
-Design Decisions and Location (layer/comp)
-Rationale (connect to drivers)
-Service-Oriented Architecture(Server-side)
-Supports refinement of services and facilitates scalability and failover by isolating services, directly addressing CRN‑2
-Use Single Sign‑On (SSO) for authentication and role‑based access
-Provides secure login for UC‑5 system access. Must be highly available and scalable to handle multiple roles concurrently
-Structuring the application using a three-tier deployment pattern
-Separates concerns, the application layer can be replicated for availability while the data layer supports backup and recovery
-Stateless service design for business logic modules
-Provides horizontal scaling and load balancing which is essential for UC-1 
-Introduce an API Gateway with Retry/Recovery Mechanisms
-Ensures synchronization with external systems which correlates to UC‑6. Supports graceful degradation under partial failures
+In this iteration, the focus is on identifying architectural elements that support primary system functionality.  
+We specifically address **CRN-2**, which states:
 
-Alternative
-Reason for discarding
-Monolithic Architecture
-Discarded due to poor scalability and difficulty in implementing failover/backup strategies required by CRN‑2
-Stateful Service Design
-Discarded since maintaining state across servers complicates failover and scalability; stateless design better supports CRN‑2.
-Custom Authentication Mechanism
-Discarded in favor of standardized SSO, which is secure, interoperable, and scalable across multiple roles
+> **The system must have high availability and scalability, including failover strategies and backup/recovery mechanisms for worst-case scenarios.**
 
-Step 5: Create model, extract objects
-Design Decisions and Location (layer/comp)
-Rationale (connect to drivers)
-Dashboard service(Business Layer)
-Generates and serves personalized dashboards for students, lecturers, and maintainers.
-Notification service(Business Layer)
-Manages creation, editing, and delivery of notifications. Ensures reliable delivery under high load.
-Data synchronization(service layer)
-Synchronizes data between AIDAP and external systems. Includes retry/recovery mechanisms.
-System maintenance modules(cross-cutting)
-Deploys updates with zero downtime. Performs secure backup and restoration of system state
-Authentication and Access Control(Cross-cutting)
-Provides secure login and role based authorizations for users
+The following use cases apply:
 
-Focused on availability and scalability(CRN-2). Introduced system maintenance and data synchronization service for failover and backup. 
+- **UC-1**
+- **UC-5**
+- **UC-6**
 
-Step 6: Sketch (Diagram) & Record (Table)
+---
 
+## Step 3: Architectural Focus (Client-side vs Server-side)
 
+Since this is the second iteration, the architecture zooms in on modules supporting selected use cases and the availability/scalability driver.
+
+Focus: **Server-side**, with attention to:
+- Responsibilities tied to **availability**
+- Responsibilities tied to **modifiability**
+- Service decomposition and refinement
+
+---
+
+# Step 4: Architectural Decisions
+
+## A. Design Decisions and Rationale
+
+| Design Decision / Location                         | Rationale (Connection to Drivers) |
+|----------------------------------------------------|----------------------------------|
+| **Service-Oriented Architecture (Server-side)**    | Supports modularity, failover, horizontal scaling → satisfies CRN-2. |
+| **Single Sign-On (SSO) with Role-Based Access**    | Provides secure login for UC-5 and scales to multiple roles. |
+| **Three-Tier Deployment Pattern**                  | Separation of concerns; application tier can be replicated for high availability; data tier supports backup/recovery. |
+| **Stateless Business Logic Services**              | Essential for horizontal scaling, load balancing, and UC-1 performance. |
+| **API Gateway with Retry/Recovery Mechanisms**     | Ensures synchronization with external systems (UC-6) and supports graceful degradation under partial failures. |
+
+---
+
+## B. Alternatives Considered
+
+| Alternative                | Reason for Discarding |
+|---------------------------|------------------------|
+| **Monolithic Architecture** | Poor scalability; difficult to implement failover/backups required for CRN-2. |
+| **Stateful Service Design** | State replication complicates failover; reduces scalability. |
+| **Custom Authentication Mechanism** | SSO is more secure, interoperable, and scalable; custom auth increases maintenance cost. |
+
+---
+
+# Step 5: Extracted Components (Model Decomposition)
+
+| Component / Layer                                | Responsibility / Rationale |
+|--------------------------------------------------|----------------------------|
+| **Dashboard Service (Business Layer)**           | Generates personalized dashboards for students, lecturers, and maintainers. |
+| **Notification Service (Business Layer)**        | Handles creation, editing, and delivery of notifications; must be reliable under high load. |
+| **Data Synchronization Service (Service Layer)** | Syncs AIDAP with external systems; incorporates retry/recovery logic for failover. |
+| **System Maintenance Modules (Cross-Cutting)**   | Supports zero-downtime updates; manages secure backup and restoration. |
+| **Authentication & Access Control (Cross-Cutting)** | Provides secure login and role-based authorizations. |
+
+**Driver Alignment:**  
+These components directly support **CRN-2** (availability + scalability) and the needs of **UC-1, UC-5, and UC-6**.
+
+---
+
+# Step 6: Sketch & Documentation (Diagram Placeholder)
 
 Element
 Responsibility
