@@ -71,6 +71,11 @@ Replication, load balancing, monitoring, and stateless design applied across ser
 Authentication and Access control 
 Provides secure login and role‑based access. Integrates with SSO (Keycloak/OAuth2). Replicated for high availability.
 <img width="1250" height="579" alt="image" src="https://github.com/user-attachments/assets/8db98ba1-8c80-4e07-9641-dc738fb4122a" />
+<img width="902" height="639" alt="image" src="https://github.com/user-attachments/assets/51457488-831b-4d69-986a-cd41bb4f4245" />
+<img width="665" height="700" alt="image" src="https://github.com/user-attachments/assets/4b00f333-c7eb-4a86-b41e-b2225144164b" />
+<img width="1250" height="697" alt="image" src="https://github.com/user-attachments/assets/2884141d-cd91-45f7-88e6-d32a92be2de9" />
+
+
 
 step 7: Kanban in sheets
 
