@@ -1,1 +1,204 @@
-Include in this file the 7 steps for Iteration 1
+Step 1
+
+Design Purpose
+This is a greenfield system with a mature domain. The purpose is to help users easily access campus information through an AI-powered chat interface that connects to existing university systems.
+Primary Functional Requirements
+The use cases we believe to be important and primary are:
+UC-1: Supports the main business goal
+UC-5: Supports business goal with a central authentication service
+UC-6: Supports external integrations
+Quality Attribute Scenarios
+Refer to the Quality Attribute Scenario Table below, chosen QA’s are QA-1, QA-2 and QA-4 for this iteration.
+
+Constraints
+All constraints discussed in Phase 1 included as drivers except for CON-2
+Concerns
+All concerns discussed in Phase 1 included as drivers
+
+Quality Attribute Scenario Table
+
+Scenario
+Importance to Customer
+Difficulty to Implement
+QA-1
+high
+Medium
+QA-2
+low
+High
+QA-3
+high
+Medium
+QA-4
+medium
+high
+QA-5
+high
+low
+
+Step 2
+Since this is the first iteration in the design of the greenfield system the goal of the iteration is to establish the structure of the overall system which aligns with the architectural concern CRN-4.
+
+    The drivers that have the most importance for the current iteration are as follows:
+
+QA-1: Performance
+QA-2: Modifiability
+QA-3- Availability
+CON-1: Every entry point to AIDAP has to go through the university SSO.
+CON-3: An integration layer/API gateway needs to be used to connect external systems.
+CRN-1: A multi-channel interface layer must be used for voice and text/voice interactions.
+
+Step 3
+Since this is a greenfield system we have to refine the entire AIDAP system shown above.
+
+Step 4
+
+Design Decisions and Location (layer/comp)
+Rationale (connect to drivers)
+Logically structure the client part of the system using the RIA ( Rich Internet Application ) reference architecture.
+The Rich Internet Application (RIA) reference architecture supports the development of applications that run on a web browser and can be accessible from any-internet connected device (RS-9). RIA’s also provides a rich and dynamic user interface capable of delivering interactive conversational experiences and real-time updates, aligning with the system’s requirements for natural-language interaction and contextual responses (R1, R6). In addition, RIAs allow certain business logic to run on the client, this includes processing like rendering dashboards (UC-1) and handling voice/text inputs (R-4).
+Logically structure the server part of the system using the Service Applications reference architecture.
+The Service Application reference architecture best supports the system from the server point of view as it does not have a user interface and is not controlled by humans. Since the system is also loosely coupled the Service Application fits best as it should expose services to external systems and front-ends (CRN-4).
+Physically structure the application using the three-tier deployment pattern.
+The 3-Tier distributed deployment pattern allows for an existing database server and access through a web browser so it fits the system the best (RS-9). The business/application tier allows for communication and integration between the multiple external services (CON-3). The database tier also allows for the shared institutional data to be stored separately from the application tier (RD-1, UC-6).
+Use the Spring framework for component connection in the application layer.
+Spring provides dependency injection and modular component wiring, making it easier to connect backend services such as integration modules, NLP processing, and security handlers. This supports a loosely coupled application layer that aligns with the system’s need for integration points and easy extensibility (CRN-4, RM5).
+
+Discarded Alternatives
+
+Alternative
+Reason for Discarding
+Rich Client Application (RCA) for the client part.
+The reference architecture Rich Client Application (RCA) is oriented on running on the clients machine internally and would require some sort of installation for every device the user wants to connect. Although RCA also adds deployment and update complexity for thousands of students and faculty, this option was discarded because AIDAP must remain lightweight, easily accessible, and universally available through a browser.
+Web Application for the server part.
+The Web Application reference architecture was discarded because it’s designed for applications that interact directly with end-users through a graphical user interface. On the other hand, client apps use APIs and service calls to reach AIDAP's server rather than people. A Web Application architecture, which is centered on UI rendering and page delivery, does not satisfy the system's objectives since the backend must function as a service layer that exposes business logic and connectors to external systems.
+4-tier Deployment Pattern for the physical structure.
+The 4-tier deployment model was discarded because it introduces additional layers that add unnecessary complexity for the initial iteration of AIDAP. AIDAP's functional needs can be fully met with a more straightforward 3-tier structure. At this point, adding a fourth tier does not yield significant architectural benefits
+Java Server Faces (JSF) framework for the server-side.
+JSF is focused on building server-rendered user interfaces, but AIDAP’s client is implemented as a browser-based Rich Internet Application (RIA), not a server-rendered web UI. A UI framework like JSF is unnecessary and would add complexity without supporting any architectural driver (CRN-4, RS9).
+
+Step 5
+
+Design Decisions and Location (layer/comp)
+Rationale (connect to drivers)
+Create a dedicated module for Integration Services in the service layer for the Service Application.
+Each external system is accessed through its own integration module, which integrates API calls, data transformation, and error handling. With this structure data flow is consistent and supports the integration concern (CRN-4) and requirements for interoperability and data consistency (R3, RD1–RD4).
+Create a dedicated Conversation/Query module in the Business layer of the Service Application reference architecture.
+This module would route the query to the appropriate integration and data service in order to assemble and output the best answer. It would directly support the conversational access to the institutional data (R1, R5, R6).
+
+Step 6
+
+Element
+Responsibility
+Rich Web UI
+Renders dashboards, chatbox and notifications screens. Handles user actions.
+Dashboard Processing
+Generates front-end analytics using cached data.
+Client Session
+Stores temporary user session data like roles and preferences.
+Security
+Protects session tokens/data and client-side authentication.
+Isolated Storage
+Holds cached and non sensitive client side data like offline dashboards and UI states.
+Client Communication
+Sends/receives HTTP requests from the server.  
+Operational Management
+Handles maintenance,logging and tracks performance for Application Logic and API Integration (UC-4).
+Server Security
+Provides authorization, encryption, input validation and threat protection.
+API Integration
+Receives clients requests and maps them to appropriate internal operation.
+Query Module
+Routes and optimizes query for optimal responses. Also executes read/search operations for dashboards.  
+Application Logic
+Manages core business rules for AIDAP (sync workflows, SSO flows, push notifications). Ensures consistency between external systems and the database.
+Auth Manager
+Processes authentication and the Single Sign On (SSO).
+Data Access
+Provides CRUD operations on the internal AIDAP database.
+Service Agents
+Manages connections and data formatting to the external institutions systems.
+
+Deployment View
+
+Element
+Responsibility
+User/Client Server
+Handles all user interaction through the browser. Performs lightweight client-side processing (dashboard rendering, UI updates) and stores temporary session/cache data locally.
+Application Server
+Executes the core business logic of AIDAP. Manages authentication, processes client requests, queries the database, and communicates with external university systems through APIs.
+Database
+Stores all internal institutional data including user profiles, system configuration, analytics data, and synchronized academic information.
+External Systems
+Connected university systems accessed via REST API to provide/synchronize academic data (courses, schedules, registration info).
+
+Relationship Between
+Description
+User/Client Server ←→ Application Server
+All communication is done through HTTPS.
+Application Server ←→ Database
+Application server performs SQL queries and updates on the Database.
+Application Server ←→ External Systems
+Application server communicates with the external systems through REST API’s.
+
+Step 7
+
+Not Addressed
+Partially Addressed
+Completely Addressed
+Design Decisions Made During the Iteration
+
+UC-1
+Dashboard processing is defined as a component which generates a dashboard along with the Rich Web UI.
+
+UC-5
+
+Authentication and session sign-ins through the SSO are supported through the Auth Manager, not fully designed yet.
+
+UC-6
+Synchronization with external institution systems is completely defined through the Service Agents component.
+
+QA-1
+
+API Interface and Query module map appropriate operations to given query, data flow not fully designed.
+
+QA-2
+
+Gateway from new external data is defined through the Service Agents module, not fully designed yet.
+
+QA-4
+
+Security in both client and server side is defined, encryption configurations not implemented.
+
+CON-1
+
+Auth Manager integrates and authenticates the SSO, endpoints not finalized
+
+CON-3
+External systems are accessed through Service Agents module using REST API’s
+
+CON-4
+
+Auth Manager and Security enforce role-based access along with saved user data, data-partitioning not fully implemented.
+
+CON-5
+
+With the isolated storage module system is always available, load-balancing not yet implemented.
+
+CRN-1
+
+Rich Web UI modules support text-based interactions, voice pipeline not fully designed.
+CRN-2
+
+No backup or failover strategy defined in current iteration.
+
+CRN-3
+
+Operational management allows for dashboard monitoring/alerts, engagement yet to be designed.
+
+CRN-4
+Integration points are defined through Service Agents and Application Logic.
+
+CRN-5
+
+Application Logic and Query Module allows for personalization decisions, model performance not yet defined.
