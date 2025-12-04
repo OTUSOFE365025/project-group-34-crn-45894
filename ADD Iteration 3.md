@@ -11,6 +11,25 @@
 
 # **ATAM Risks, Non-Risks, Sensitivities and Trade-offs** 
 
+## Sensitivities
+- **S1**: Number of concurrent users may directly affect the query response time  
+- **S2**: Dependency of external systems impacts uptime  
+- **S3**: Network latency and reliability between the AIDAP and other university systems  
+
+## Tradeoffs
+- **T1**: Optimization for peak loads may increase infrastructure costs  
+- **T2**: Scheduled maintenance will ensure stability but will affect availability during certain times  
+- **T3**: Access control through authentication improves security but makes usability more complicated  
+
+## Risks
+- **R1**: Query latency under peak loads could degrade responsiveness of dashboard  
+- **R2**: Single point of failure in integration connectors will reduce availability  
+- **R3**: Weak integration with SSO could expose authentication vulnerabilities  
+
+## Non-Risks
+- **N1**: Horizontal scaling with load balancers is already supported  
+- **N2**: Local dashboards remain accessible if external systems become unavailable  
+- **N3**: Role-based access control ensures only authorized users can access sensitive data  
 
 
 
