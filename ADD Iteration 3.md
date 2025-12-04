@@ -6,7 +6,7 @@
 | QA - 3 Availability |  AIDAP depends on external university systems and must remain continuously accessible for students, lecturers, and administrators throughout the day. |
 | QA - 4 Security  |  The AIDAP system must protect sensitive academic data and ensure safe authentication through the university’s SSO while interacting with multiple external services. |
 
-# **Elements Selected for Refinement**
+# **Elements Selected for Refinement (iteration 3)**
 
 In this iteration, the focus is on the three critical quality attributes: **Performance, Availability, and Security**.  
 The following architectural elements were selected for refinement:
@@ -28,11 +28,10 @@ The following architectural elements were selected for refinement:
   - Refined to improve **performance** with caching strategies and indexing, while ensuring **security** through encryption.  
   - Supports availability by maintaining local dashboards even if external systems are temporarily unavailable.
 
-# **Design Decisions and Rationale**
+
+# **Design Decisions and Rationale (iteration 3)**
 
 In this iteration, design concepts were selected to directly address the three critical quality attributes: **Performance, Availability, and Security**.
-
-## Design Decisions and Rationale
 
 ### Performance
 - **Decision**: Introduce caching, load balancing, and monitoring agents for latency.  
@@ -45,6 +44,23 @@ In this iteration, design concepts were selected to directly address the three c
 ### Security
 - **Decision**: Enforce role‑based access, encryption at rest and in transit, and immutable audit logs.  
 - **Rationale**: Protects sensitive academic data, ensures compliance with institutional privacy policies, and strengthens authentication.
+
+
+# Design Decisions and Rationale (Iteration 3)
+
+| Design Decision & Location (Layer/Component) | Rationale (Connected to Drivers) |
+|----------------------------------------------|----------------------------------|
+| **Error Recovery Manager** (Integration Connectors Layer) | Provides retry logic and fail‑over handling when external university systems fail; keeps the assistant continuously available even without external dependencies (**QA‑3 Availability**). |
+| **Monitoring Service** (Cross‑cutting / Performance Layer) | Ensures responsiveness under thousands of concurrent queries; detects external system failures early (**QA‑1 Performance**, **QA‑3 Availability**). |
+| **Security Management** (Security Layer) | Enforces SSO authentication and encryption at rest/in transit; protects sensitive academic data (**QA‑4 Security**). |
+
+# Step 7 – Kanban Analysis (Iteration 3)
+
+| Not Addressed | Partially Addressed | Completely Addressed | Design Decisions Made During the Iteration |
+|---------------|----------------------|-----------------------|--------------------------------------------|
+| –             | –                    | **QA‑1 Performance**  | Monitoring Service ensures latency/throughput metrics are collected; anomalies detected; dashboards remain responsive under thousands of concurrent queries. |
+| –             | –                    | **QA‑3 Availability** | Error Recovery Manager ensures retry and fail‑over when external systems are down; system remains continuously available. |
+| –             | –                    | **QA‑4 Security**     | Security Manager enforces SSO and role‑based authentication and encryption; all queries logged for auditability; sensitive data remains protected. |
 
 
 # **ATAM Risks, Non-Risks, Sensitivities and Trade-offs** 
