@@ -6,7 +6,45 @@
 | QA - 3 Availability |  AIDAP depends on external university systems and must remain continuously accessible for students, lecturers, and administrators throughout the day. |
 | QA - 4 Security  |  The AIDAP system must protect sensitive academic data and ensure safe authentication through the university’s SSO while interacting with multiple external services. |
 
+# **Elements Selected for Refinement**
 
+In this iteration, the focus is on the three critical quality attributes: **Performance, Availability, and Security**.  
+The following architectural elements were selected for refinement:
+
+## Elements to Refine
+
+- **Integration Connectors**  
+  - Handle communication with external university systems (LMS, Registration, Calendar, Mail).  
+  - Refined to improve **availability** through retry/fail‑over mechanisms and monitoring of connector health.  
+  - Directly addresses sensitivity to external dependencies and network reliability.
+
+- **Security Layer**  
+  - Enforces authentication via institutional SSO and role‑based access control.  
+  - Refined to strengthen **security** with encryption at rest/in transit and audit logging.  
+  - Directly addresses risks of weak SSO integration and ensures compliance with institutional privacy policies.
+
+- **Data Storage Layer**  
+  - Stores historical interactions, personalization data, and cached responses.  
+  - Refined to improve **performance** with caching strategies and indexing, while ensuring **security** through encryption.  
+  - Supports availability by maintaining local dashboards even if external systems are temporarily unavailable.
+
+# **Design Decisions and Rationale**
+
+In this iteration, design concepts were selected to directly address the three critical quality attributes: **Performance, Availability, and Security**.
+
+## Design Decisions and Rationale
+
+### Performance
+- **Decision**: Introduce caching, load balancing, and monitoring agents for latency.  
+- **Rationale**: Ensures query response times remain within SLA (<2 seconds) under thousands of concurrent users.
+
+### Availability
+- **Decision**: Add redundant connectors, retry and recovery mechanisms, and fail‑over strategies.  
+- **Rationale**: Keeps the system continuously accessible even when external university systems fail.
+
+### Security
+- **Decision**: Enforce role‑based access, encryption at rest and in transit, and immutable audit logs.  
+- **Rationale**: Protects sensitive academic data, ensures compliance with institutional privacy policies, and strengthens authentication.
 
 
 # **ATAM Risks, Non-Risks, Sensitivities and Trade-offs** 
