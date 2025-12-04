@@ -20,6 +20,13 @@
 # ATAM Risk Assessment Table
 
 
+| Quality Attribute (QA) | Sensitivity Points (S) | Tradeoff Points (T) | Risks (R) | Non-Risks (N) |
+|------------------------|------------------------|----------------------|-----------|----------------|
+| **QA 1**               | S1, S3                 | T1                   | R1        | N1, N2         |
+| **QA 3**               | S2                     | T2                   | R2        | N2             |
+| **QA 4**               | S2, S3                 | T3                   | R3        | N3             |
+
+
 
 
 
